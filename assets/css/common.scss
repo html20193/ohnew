@@ -1,0 +1,174 @@
+@charset "utf-8";
+/* 변수와 믹스인을 저장한 외부파일을 호출
+파일명 앞에 _가 있으면 scss파일을 css로 실시간 변화시키지 않는다
+@import "_var.scss";
+@import "_mixin.scss";
+
+@import "_var";         확장명 생략 가능
+@import "_mixin";
+*/
+@import "_var", "_mixin";
+@font-face{
+    font-family: notoS;
+    font-weight: 300;
+    src: url("../../../fonts/NotoSansKR-Light.woff2") format("woff2"),
+    url("../../../fonts/NotoSansKR-Light.woff") format("woff"),
+    url("../../../fonts/NotoSansKR-Light.otf") format("opentype");
+}
+@font-face{
+    font-family: notoS;
+    font-weight: 400;
+    src: url("../../../fonts/NotoSansKR-Regular.woff2") format("woff2"),
+    url("../../../fonts/NotoSansKR-Regular.woff") format("woff"),
+    url("../../../fonts/NotoSansKR-Regular.otf") format("opentype");
+}
+@font-face{
+    font-family: notoS;
+    font-weight: 500;
+    src: url("../../../fonts/NotoSansKR-Medium.woff2") format("woff2"),
+    url("../../../fonts/NotoSansKR-Medium.woff") format("woff"),
+    url("../../../fonts/NotoSansKR-Medium.otf") format("opentype");
+}
+@font-face{
+    font-family: notoS;
+    font-weight: 700;
+    src: url("../../../fonts/NotoSansKR-Bold.woff2") format("woff2"),
+    url("../../../fonts/NotoSansKR-Bold.woff") format("woff"),
+    url("../../../fonts/NotoSansKR-Bold.otf") format("opentype");
+}
+
+@font-face{
+    font-family: montS;
+    font-weight: 300;
+    src: url("../fonts/montserrat-v14-latin-300.woff2") format("woff2"),
+    url("../fonts/montserrat-v14-latin-300.woff") format("woff"),
+    url("../fonts/montserrat-v14-latin-300.ttf") format("truetype");
+}
+@font-face{
+    font-family: montS;
+    font-weight: 500;
+    src: url("../fonts/montserrat-v14-latin-500.woff2") format("woff2"),
+    url("../fonts/montserrat-v14-latin-500.woff") format("woff"),
+    url("../fonts/montserrat-v14-latin-500.ttf") format("truetype");
+}
+@font-face{
+    font-family: montS;
+    font-weight: 700;
+    src: url("../fonts/montserrat-v14-latin-700.woff2") format("woff2"),
+    url("../fonts/montserrat-v14-latin-700.woff") format("woff"),
+    url("../fonts/montserrat-v14-latin-700.ttf") format("truetype");
+}
+
+/* tag reset */
+body, h1, h2, h3, h4, h5, h6, ul, button, p, figure{margin: 0;padding: 0;}
+h1, h2, h3, h4, h5, h6{font-size: 100%;}
+ul{list-style: none;}
+a:link, a:visited, a:hover, a:active{text-decoration: none;color: inherit;}
+button{border: none;background: none;}
+img{vertical-align: top;}
+img, figure{max-width: 100%;height: auto;}/* 모바일에서 반드시 추가 */
+address{font-style: normal;}
+header, nav, section, article, figure, footer{display: block;}
+
+/* common class */
+.f_l{float: left;}
+.f_r{float: right;}
+.p_r{position: relative;}
+.p_a{position: absolute;}
+.clearfix::after{content: "";display: block;clear: both;}
+.sr-only{position: absolute;top: 0;left: -9999px;}
+.area{padding-left: 15px;padding-right: 15px;}
+.mt80{margin-top: 80px;}
+.side15{padding-left: 15px;padding-right: 15px;}
+
+body{font-family: notoS, montS;font-size: 13px;color: #333;line-height: 22px;font-weight: 400;word-break: keep-all;}
+
+/* header : .load(top 마이너스에서 0으로 보여지게), .bgchange(흰배경처리) */
+#header{
+    @include transition(all 0.6s);
+    position: fixed;top: -57px;left: 0;right: 0;height: 56px;border-bottom: 1px solid transparent;z-index: 900;
+    &.load{top: 0;} //#header.load
+    //scroll
+    &.bgchange{
+        background: #fff;border-color: #e5e5e5;
+        .logo .logo_white{opacity: 0;}
+        .logo .logo_color{opacity: 1;}
+        .btn_menu .line{background: $midgray;}
+    }
+    .btn_menu.active .line{background: #fff !important;}
+}
+.logo{
+    &, img{position: absolute;}
+    width: 105px;height: 34px;top: 11px;left: 15px;
+    img{
+        @include transition(opacity 0.5s);
+        top: 0;left: 0;
+    }
+    .logo_color{opacity: 0;}
+}
+.btn_menu{
+    &, .line{position: absolute;}
+    top: 16px;right: 15px;width: 29px;height: 24px;z-index: 1000;
+    .line{
+        @include radius(8px);
+        @include transition(all 0.5s);
+        width: 100%;height: 4px;background: #fff;left: 0;
+        &.top{top: 0;}
+        &.mid{top: 10px;}
+        &.btm{top: 20px;}
+    }
+    &.active{
+        .top{
+            @include transform(rotate(45deg));
+            top: 10px;
+        }
+        .mid{opacity: 0;}
+        .btm{
+            @include transform(rotate(-45deg));
+            top: 10px;
+        }
+    }
+}
+#gnb{
+    visibility: hidden;position: fixed;top: 0;left: 100%;right: 0;bottom: 0;background: #4c265c;padding-top: 56px;overflow-y: auto; //overflow-y: auto; 모바일회전 landscape(가로)일 경우 fixed는 숨겨진 메뉴를 볼수 없기때문에
+    ul li a{
+        display: block;height: 35px;line-height: 35px;color: #fff;
+        &:focus{outline: 1px dashed yellow;}
+    }
+    > ul > li{
+        > a{position: relative;padding: 15px 40px;font-size: 18px;font-weight: 500;}
+        &:not(.nosub) > a::before, &:not(.nosub) > a::after{content: "";position: absolute;right: 40px;top: 50%;width: 12px;height: 2px;background: #fff;}
+        &:not(.nosub) > a::after{
+            @include transform(rotate(90deg));
+            @include transition(transform 0.5s);
+        }
+        //#gnb > ul > li.on > a::after
+        &.on > a::after{@include transform(rotate(0deg));}
+    }
+    ul li ul{
+        display: none;background: #874ca0;
+        li a{padding: 5px 40px;}
+    }
+}
+
+/* cotent */
+#content{padding-bottom: 100px;}
+.fade{
+    @include transition(all 0.5s);
+    opacity: 0;
+    &.on{opacity: 1;}
+    &.up{@include transform(translateY(40px));}
+    &.down{@include transform(translateY(-40px));}
+    &.right{@include transform(translateX(-40px));}
+    &.left{@include transform(translateX(40px));}
+    &.on.up, &.on.down{@include transform(translateY(0px));}
+    &.on.right, &.on.left{@include transform(translateX(0px));}
+}
+
+/* footer */
+#footer{
+    padding: 50px 25px;text-align: center;color: #fff;background: #000;
+    a img{height: 44px;}
+    address{padding: 30px 0 12px;font-weight: 300;line-height: 1.62;}
+    p{font-size: 11px;font-weight: 300;line-height: 2.17;color: rgba(255,255,255,.2);}
+}

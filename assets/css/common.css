@@ -1,0 +1,283 @@
+@charset "UTF-8";
+/* 변수와 믹스인을 저장한 외부파일을 호출
+파일명 앞에 _가 있으면 scss파일을 css로 실시간 변화시키지 않는다
+@import "_var.scss";
+@import "_mixin.scss";
+
+@import "_var";         확장명 생략 가능
+@import "_mixin";
+*/
+@font-face {
+  font-family: notoS;
+  font-weight: 300;
+  src: url("../../../fonts/NotoSansKR-Light.woff2") format("woff2"), url("../../../fonts/NotoSansKR-Light.woff") format("woff"), url("../../../fonts/NotoSansKR-Light.otf") format("opentype"); }
+@font-face {
+  font-family: notoS;
+  font-weight: 400;
+  src: url("../../../fonts/NotoSansKR-Regular.woff2") format("woff2"), url("../../../fonts/NotoSansKR-Regular.woff") format("woff"), url("../../../fonts/NotoSansKR-Regular.otf") format("opentype"); }
+@font-face {
+  font-family: notoS;
+  font-weight: 500;
+  src: url("../../../fonts/NotoSansKR-Medium.woff2") format("woff2"), url("../../../fonts/NotoSansKR-Medium.woff") format("woff"), url("../../../fonts/NotoSansKR-Medium.otf") format("opentype"); }
+@font-face {
+  font-family: notoS;
+  font-weight: 700;
+  src: url("../../../fonts/NotoSansKR-Bold.woff2") format("woff2"), url("../../../fonts/NotoSansKR-Bold.woff") format("woff"), url("../../../fonts/NotoSansKR-Bold.otf") format("opentype"); }
+@font-face {
+  font-family: montS;
+  font-weight: 300;
+  src: url("../fonts/montserrat-v14-latin-300.woff2") format("woff2"), url("../fonts/montserrat-v14-latin-300.woff") format("woff"), url("../fonts/montserrat-v14-latin-300.ttf") format("truetype"); }
+@font-face {
+  font-family: montS;
+  font-weight: 500;
+  src: url("../fonts/montserrat-v14-latin-500.woff2") format("woff2"), url("../fonts/montserrat-v14-latin-500.woff") format("woff"), url("../fonts/montserrat-v14-latin-500.ttf") format("truetype"); }
+@font-face {
+  font-family: montS;
+  font-weight: 700;
+  src: url("../fonts/montserrat-v14-latin-700.woff2") format("woff2"), url("../fonts/montserrat-v14-latin-700.woff") format("woff"), url("../fonts/montserrat-v14-latin-700.ttf") format("truetype"); }
+/* tag reset */
+body, h1, h2, h3, h4, h5, h6, ul, button, p, figure {
+  margin: 0;
+  padding: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%; }
+
+ul {
+  list-style: none; }
+
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: inherit; }
+
+button {
+  border: none;
+  background: none; }
+
+img {
+  vertical-align: top; }
+
+img, figure {
+  max-width: 100%;
+  height: auto; }
+
+/* 모바일에서 반드시 추가 */
+address {
+  font-style: normal; }
+
+header, nav, section, article, figure, footer {
+  display: block; }
+
+/* common class */
+.f_l {
+  float: left; }
+
+.f_r {
+  float: right; }
+
+.p_r {
+  position: relative; }
+
+.p_a {
+  position: absolute; }
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both; }
+
+.sr-only {
+  position: absolute;
+  top: 0;
+  left: -9999px; }
+
+.area {
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.mt80 {
+  margin-top: 80px; }
+
+.side15 {
+  padding-left: 15px;
+  padding-right: 15px; }
+
+body {
+  font-family: notoS, montS;
+  font-size: 13px;
+  color: #333;
+  line-height: 22px;
+  font-weight: 400;
+  word-break: keep-all; }
+
+/* header : .load(top 마이너스에서 0으로 보여지게), .bgchange(흰배경처리) */
+#header {
+  -webkit-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  transition: all 0.6s;
+  position: fixed;
+  top: -57px;
+  left: 0;
+  right: 0;
+  height: 56px;
+  border-bottom: 1px solid transparent;
+  z-index: 900; }
+  #header.load {
+    top: 0; }
+  #header.bgchange {
+    background: #fff;
+    border-color: #e5e5e5; }
+    #header.bgchange .logo .logo_white {
+      opacity: 0; }
+    #header.bgchange .logo .logo_color {
+      opacity: 1; }
+    #header.bgchange .btn_menu .line {
+      background: #646464; }
+  #header .btn_menu.active .line {
+    background: #fff !important; }
+
+.logo {
+  width: 105px;
+  height: 34px;
+  top: 11px;
+  left: 15px; }
+  .logo, .logo img {
+    position: absolute; }
+  .logo img {
+    -webkit-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    top: 0;
+    left: 0; }
+  .logo .logo_color {
+    opacity: 0; }
+
+.btn_menu {
+  top: 16px;
+  right: 15px;
+  width: 29px;
+  height: 24px;
+  z-index: 1000; }
+  .btn_menu, .btn_menu .line {
+    position: absolute; }
+  .btn_menu .line {
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    width: 100%;
+    height: 4px;
+    background: #fff;
+    left: 0; }
+    .btn_menu .line.top {
+      top: 0; }
+    .btn_menu .line.mid {
+      top: 10px; }
+    .btn_menu .line.btm {
+      top: 20px; }
+  .btn_menu.active .top {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 10px; }
+  .btn_menu.active .mid {
+    opacity: 0; }
+  .btn_menu.active .btm {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 10px; }
+
+#gnb {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  right: 0;
+  bottom: 0;
+  background: #4c265c;
+  padding-top: 56px;
+  overflow-y: auto; }
+  #gnb ul li a {
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    color: #fff; }
+    #gnb ul li a:focus {
+      outline: 1px dashed yellow; }
+  #gnb > ul > li > a {
+    position: relative;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: 500; }
+  #gnb > ul > li:not(.nosub) > a::before, #gnb > ul > li:not(.nosub) > a::after {
+    content: "";
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    width: 12px;
+    height: 2px;
+    background: #fff; }
+  #gnb > ul > li:not(.nosub) > a::after {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-transition: transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s; }
+  #gnb > ul > li.on > a::after {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  #gnb ul li ul {
+    display: none;
+    background: #874ca0; }
+    #gnb ul li ul li a {
+      padding: 5px 40px; }
+
+/* cotent */
+#content {
+  padding-bottom: 100px; }
+
+.fade {
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0; }
+  .fade.on {
+    opacity: 1; }
+  .fade.up {
+    -webkit-transform: translateY(40px);
+    transform: translateY(40px); }
+  .fade.down {
+    -webkit-transform: translateY(-40px);
+    transform: translateY(-40px); }
+  .fade.right {
+    -webkit-transform: translateX(-40px);
+    transform: translateX(-40px); }
+  .fade.left {
+    -webkit-transform: translateX(40px);
+    transform: translateX(40px); }
+  .fade.on.up, .fade.on.down {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px); }
+  .fade.on.right, .fade.on.left {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px); }
+
+/* footer */
+#footer {
+  padding: 50px 25px;
+  text-align: center;
+  color: #fff;
+  background: #000; }
+  #footer a img {
+    height: 44px; }
+  #footer address {
+    padding: 30px 0 12px;
+    font-weight: 300;
+    line-height: 1.62; }
+  #footer p {
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 2.17;
+    color: rgba(255, 255, 255, 0.2); }
+
+/*# sourceMappingURL=common.css.map */

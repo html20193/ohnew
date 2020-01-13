@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <!-- maximum-scale=1.0, minimum-scale=1.0, user-scalable=no 필수 아님
+    initial-scale:초기비율, maximum-scale:확대비율, minimum-scale:축소비율, user-scalable : 사용자에게 확대 축소 기능을 부여할지 여부
+    모바일, 반응형웹에서는 viewport 필수
+    viewport : 실제 웹사이트를 표시하는 화면 영역
+    -->
+    <title> overview : About us : 오뉴이노베이션 </title>
+    <link rel="stylesheet" href="../assets/css/swiper.css">
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png"><!-- 아이폰 전용 -->
+    <link rel="shortcut icon" href="../assets/images/favicon.png"><!-- 안드로이드폰 전용 -->
+    <!-- <link rel="apple-touch-icon-precomposed" href="">아이폰, 안드로이드폰 -->
+
+    <script src="../assets/js/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/swiper.min.js"></script>
+    <script src="../assets/js/common.js"></script>
+    <script>
+        $(document).ready(function() {
+            //.info_ani ::before, .info_ani figure::before 애니메이션 처리 .bgani
+            $(window).on('scroll', function () {
+                $('.ani_go').each(function () {
+                    var winBottom = $(window).scrollTop() + $(window).height();
+                    var fadeBottom = $(this).offset().top + $(this).outerHeight() * 0.5;
+                    if (winBottom > fadeBottom) $(this).addClass('bg_ani');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="wrap"><!-- overflow: hidden 으로 오른쪽에 위치하는 네비게이션 제어 -->
+        <header id="header">
+            <h1 class="logo">
+                <a href="../index.html">
+                    <!-- 이미지 absolute로 포개기,
+                    srcset => 2배, 3배...밀도를 가진 모바일 기기에서 자신의 밀도에 맞는 이미지를 다운로드 할수있도록 처리
+                    srcset="경로명1 조건1, 경로명2 조건2"
+                    -->
+                    <img src="../assets/images/common/logo.png" alt="오뉴이노베이션" class="logo_white" srcset="../assets/images/common/logox2.png 2x, ../assets/images/common/logox3.png 3x">
+                    <img src="../assets/images/common/logo_color.png" alt="" class="logo_color" srcset="../assets/images/common/logo_colorx2.png 2x, ../assets/images/common/logo_colorx3.png 3x"><!-- 투명도 0으로 보이지 않게, #header.bgchange를 가지면 투명도1로 보여짐 -->
+                </a>
+            </h1>
+            <button class="btn_menu">
+                <span class="sr-only">메뉴 열기</span>
+                <span class="line top"></span>
+                <span class="line mid"></span>
+                <span class="line btm"></span>
+            </button>
+            <nav id="gnb">
+                <h2 class="sr-only">주메뉴</h2>
+                <ul>
+                    <li class="on">
+                        <a href="../aboutus/overview.html" data-link="first">About Us</a>
+                        <ul>
+                            <li><a href="../aboutus/overview.html">Overview</a></li>
+                            <li><a href="">History</a></li>
+                            <li><a href="">Contact Us</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Solutions</a>
+                        <ul>
+                            <li><a href="">CLOUD</a></li>
+                            <li><a href="">Infra Software</a></li>
+                            <li><a href="">Network</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Service</a>
+                        <ul>
+                            <li><a href="">Consulting Service</a></li>
+                            <li><a href="">Time Hiring Consulting</a></li>
+                            <li><a href="">Carepack</a></li>
+                        </ul>
+                    </li>
+                    <li class="nosub">
+                        <a href="">Case Study</a>
+                    </li>
+                    <li>
+                        <a href="">Support</a>
+                        <ul>
+                            <li><a href="">Notice</a></li>
+                            <li><a href="">Resource</a></li>
+                            <li><a href="">Download</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Recruit</a>
+                        <ul>
+                            <li><a href="">Talent</a></li>
+                            <li><a href="">Careers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nosub">
+                        <a href="" data-link="last">Inquiry</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section id="content">
+            <div class="top_visual sub_topvisual aboutus p_r">
+                <!-- ::before absolute,배경이미지 처리 -->
+                <div class="txtbox">
+                    <p class="fade up">Welcome to Ohnew Innovation</p>
+                    <h2 class="fade up">ABOUT US</h2>
+                </div>
+            </div>
+            <div class="side15">
+                <h3 class="sub_tit">Overview</h3>
+    
+                <article class="company_info">
+                    <h4 class="cnt_tit fade up">기업소개</h4>
+                    <p class="fade up">2012년 설립 이래 최고의 팀워크와 성공적인 오픈소스 플랫폼 구축 사례를 통해 초고속 성장을 해온 ㈜오뉴이노베이션은 고객사의 성공적인 오픈소스 플랫폼 기반의 서비스를 제공하여 기업들의 성장에 기여함으로써 함께 동반 성장하고 발전하기 위하여 끊임없이 노력하며 나아가고 있습니다. 최고만을 내세우기 전에 고객사의 믿음과 신뢰를 바탕으로 최선을 다하는 모습으로 최고의 결과를 도출할 수 있었으며, 빠르게 변모하는 IT업계에서 오픈소스 비즈니스의 변화를 선도하고 최고의 가치를 창출하는 ㈜오뉴이노베이션이 될 수 있도록 더욱 노력하겠습니다.</p>
+                    <div class="info_ani p_r ani_go"><!-- margin 수평으로 -15px -->
+                        <!-- ::before 가상요소로 배경색상 처리, absolute, z-index: -1 -->
+                        <ul class="fade right">
+                            <li>
+                                <p>인간, 고객 중심의 기업</p>
+                            </li>
+                            <li>
+                                <p>믿음, 신뢰, 이념 실천에 따른 성공</p>
+                            </li>
+                            <li>
+                                <p>오픈소스 기술의 최고를 위한 도전 및 더 나은 미래</p>
+                            </li>
+                        </ul>
+                        <figure>
+                            <img src="../assets/images/contents/sub1_01_img1.jpg" srcset="../assets/images/contents/sub1_01_img1x2.jpg 2x, ../assets/images/contents/sub1_01_img1x3.jpg 3x" alt="">
+                        </figure>
+                    </div>
+                </article>
+                <article class="company_status mt80">
+                    <h4 class="cnt_tit">기업현황</h4>
+                    <figure class="ani_go">
+                        <img src="../assets/images/contents/sub1_01_img2.jpg" srcset="../assets/images/contents/sub1_01_img2x2.jpg 2x, ../assets/images/contents/sub1_01_img2x3.jpg 3x" alt="오뉴이노베이션">
+                    </figure>
+                    <ul>
+                        <li>
+                            <strong>회사명 : </strong><span>㈜오뉴이노베이션</span>
+                        </li>
+                        <li>
+                            <strong>대표자 : </strong><span>지병훈</span>
+                        </li>
+                        <li>
+                            <strong>설립연도 : </strong><span>2012년</span>
+                        </li>
+                        <li>
+                            <strong>주소(본사) : </strong><span>서울시 구로구 디지털로 26길 61, 1604호 (에이스하이앤드타워2차)</span>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+        <footer id="footer">
+            <a href="../index.html"><img src="../assets/images/common/f_logo.png" alt="오뉴이노베이션"></a>
+            <address>08389. 서울특별시 구로구 디지털로 26길 61, 1604호 (구로동, 에이스하이엔드타워2차) <br>TEL. 02-866-2179 FAX. 02-866-2189.</address>
+            <p>COPYRIGHTS&copy;2019 Ohnew Innovation ALL RIGHTS RESERVED</p>
+        </footer>
+    </div>
+</body>
+</html>
